@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db_crud_php-statefulset
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db_crud_php
+      name: db_crud_php
+    spec:
+      containers:
+        - name: db_crud_php-container
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: db_crud_php-configmap
+          volumeMounts:
+            - name: mysql_storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql_storage
+          persistentVolumeClaim:
+            claimName: mysql_storage-pvc
+  selector:
+    matchLabels:
+      app: db_crud_php
+  serviceName: db_crud_php-service
