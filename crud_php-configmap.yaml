@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: crud_php-configmap
+  name: crud-php-configmap
 data:
-  HOST_DB: db_crud_php-service:3306
+  HOST_DB: db-crud-php-service
   USER_DB: root
   PASS_DB: q1w2e3r4
   DATABASE_DB: crud

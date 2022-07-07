@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db_crud_php-service
+  name: db-crud-php-service
 spec:
   type: ClusterIP
   ports:
     - port: 3306
   selector:
-    app: db_crud_php
+    app: db-crud-php

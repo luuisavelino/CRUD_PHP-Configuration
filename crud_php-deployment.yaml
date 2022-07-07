@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crud_php-deployment
+  name: crud-php-deployment
 spec:
   template:
     metadata:
-      name: crud_php
+      name: crud-php
       labels:
-        app: crud_php
+        app: crud-php
     spec:
       containers:
-        - name: crud_php-container
-          image: luisavelino/crud_php:1
+        - name: crud-php-container
+          image: luisavelino/crud:1.0
           ports:
             - containerPort: 80
           envFrom:
             - configMapRef:
-                name: crud_php-configmap
+                name: crud-php-configmap
           livenessProbe:
             httpGet:
               path: /
@@ -34,4 +34,4 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: crud_php
+      app: crud-php
