@@ -7,6 +7,7 @@ data:
   USER_DB: root
   PASS_DB: q1w2e3r4
   DATABASE_DB: crud
+  PORT_DB: 3306
 ---
 apiVersion: apps/v1
 kind: Deployment
