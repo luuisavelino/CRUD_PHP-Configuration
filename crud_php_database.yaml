@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: db-crud-php-container
-          image: luisavelino/mysql-crud_php:latest
+          image: luisavelino/mysql-crud_php:1.0
           ports:
             - containerPort: 3306
           envFrom:
