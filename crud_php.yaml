@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: crud-php-container
-          image: luisavelino/crud_php-source_code:0da80e8
+          image: luisavelino/crud_php-source_code:182e828
           ports:
             - containerPort: 80
           envFrom:
