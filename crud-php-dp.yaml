@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: crud-php-dp
 spec:
+  replicas: 3
   template:
     metadata:
       name: crud-php
@@ -11,7 +12,7 @@ spec:
     spec:
       containers:
         - name: crud-php-container
-          image: luisavelino/crud_php-source_code:182e828
+          image: luisavelino/crud_php-source_code:latest
           ports:
             - containerPort: 80
           envFrom:
@@ -31,7 +32,13 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
-  replicas: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+            limits: 
+              cpu: 250m
+              memory: 250Mi
   selector:
     matchLabels:
       app: crud-php
