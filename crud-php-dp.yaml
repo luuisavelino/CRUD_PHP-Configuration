@@ -1,19 +1,9 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: crud-php-configmap
-data:
-  HOST_DB: svc-db-crud-php
-  USER_DB: root
-  PASS_DB: q1w2e3r4
-  DATABASE_DB: crud
-  PORT_DB: "3306"
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crud-php-deployment
+  name: crud-php-dp
 spec:
+  replicas: 3
   template:
     metadata:
       name: crud-php
@@ -26,8 +16,8 @@ spec:
           ports:
             - containerPort: 80
           envFrom:
-            - configMapRef:
-                name: crud-php-configmap
+            - SecretRef:
+                name: crud-php-secret
           livenessProbe:
             httpGet:
               path: /
@@ -42,19 +32,13 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
-  replicas: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+            limits: 
+              cpu: 250m
+              memory: 250Mi
   selector:
     matchLabels:
       app: crud-php
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-crud-php
-spec:
-  type: NodePort
-  ports:
-    - port: 80
-      nodePort: 30000
-  selector:
-    app: crud-php
