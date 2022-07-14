@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: crud-php-dp
 spec:
+  replicas: 3
   template:
     metadata:
       name: crud-php
@@ -31,7 +32,6 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
-  replicas: 3
   selector:
     matchLabels:
       app: crud-php
