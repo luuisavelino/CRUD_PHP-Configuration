@@ -16,8 +16,8 @@ spec:
           ports:
             - containerPort: 80
           envFrom:
-            - configMapRef:
-                name: crud-php-cfg
+            - secretRef:
+                name: crud-php-secret
           livenessProbe:
             httpGet:
               path: /
