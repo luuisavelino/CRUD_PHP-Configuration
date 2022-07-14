@@ -32,6 +32,13 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+            limits:
+              cpu: 300m
+              memory: 300Mi
   selector:
     matchLabels:
       app: crud-php

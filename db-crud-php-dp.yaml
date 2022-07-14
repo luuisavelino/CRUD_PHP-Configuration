@@ -25,6 +25,13 @@ spec:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: mysql-storage-pvc
+      resources:
+        requests:
+          cpu: 50m
+          memory: 50Mi
+        limits:
+          cpu: 300m
+          memory: 300Mi
   selector:
     matchLabels:
       app: db-crud-php
