@@ -1,7 +1,16 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ConfigMap
 metadata:
-  name: db-crud-php-dp
+  name: db-crud-php-configmap
+data:
+  MYSQL_ROOT_PASSWORD: q1w2e3r4
+  MYSQL_DATABASE: crud
+  MYSQL_PASSWORD: q1w2e3r4
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-crud-php-statefulset
 spec:
   replicas: 1
   template:
@@ -17,15 +26,26 @@ spec:
             - containerPort: 3306
           envFrom:
             - configMapRef:
-                name: db-crud-php-cfg
+                name: db-crud-php-configmap
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
-            claimName: db-crud-php-pvc
+            claimName: mysql-storage-pvc
   selector:
     matchLabels:
       app: db-crud-php
-  serviceName: db-crud-php-svc
+  serviceName: svc-db-crud-php
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-db-crud-php
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3306
+  selector:
+    app: db-crud-php
