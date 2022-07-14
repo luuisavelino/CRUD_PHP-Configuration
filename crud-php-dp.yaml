@@ -18,6 +18,10 @@ spec:
           envFrom:
             - secretRef:
                 name: crud-php-secret
+
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
           livenessProbe:
             httpGet:
               path: /
@@ -32,6 +36,10 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: mysql-storage-pvc
   selector:
     matchLabels:
       app: crud-php
