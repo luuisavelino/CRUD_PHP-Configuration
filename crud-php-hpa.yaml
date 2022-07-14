@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: crud-php-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: crud-php-dp
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resources
+      resources:
+        name: cpu
+        target:
+          type: Utilizatioin
+          averageUtilization: 50
