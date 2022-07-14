@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: crud-php-cfg
 data:
-  HOST_DB: svc-db-crud-php
+  HOST_DB: db-crud-php-svc
   USER_DB: root
   PASS_DB: q1w2e3r4
   DATABASE_DB: crud
