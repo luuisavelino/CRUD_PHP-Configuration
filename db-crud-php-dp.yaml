@@ -21,6 +21,7 @@ spec:
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
+      serviceAccountName: db-crud-php-sa
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
