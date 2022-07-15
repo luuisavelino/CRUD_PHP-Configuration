@@ -13,7 +13,7 @@ spec:
       serviceAccount: crud-php-sa
       containers:
         - name: crud-php-container
-          image: luisavelino/crud_php-source_code:1f8d085
+          image: luisavelino/crud_php-source_code:5e2b81c
           ports:
             - containerPort: 80
           envFrom:

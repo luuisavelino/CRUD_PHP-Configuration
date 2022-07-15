@@ -13,7 +13,7 @@ spec:
       serviceAccount: db-crud-php-sa
       containers:
         - name: db-crud-php-container
-          image: luisavelino/db-crud_php-source_code:1f8d085
+          image: luisavelino/db-crud_php-source_code:5e2b81c
           ports:
             - containerPort: 3306
           envFrom:
