@@ -15,7 +15,7 @@ spec:
         - name: db-crud-php-container
           image: luisavelino/db-crud_php-source_code:624791a
           ports:
-            - containerPort: 80
+            - containerPort: 3306
           envFrom:
             - secretRef:
                 name: db-crud-php-secret
