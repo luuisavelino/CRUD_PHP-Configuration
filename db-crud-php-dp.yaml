@@ -10,9 +10,10 @@ spec:
       labels:
         app: db-crud-php
     spec:
+      serviceAccount: db-crud-php-sa
       containers:
         - name: db-crud-php-container
-          image: luisavelino/mysql-crud_php:1.0
+          image: luisavelino/db-crud_php-source_code:624791a
           ports:
             - containerPort: 80
           envFrom:
@@ -21,7 +22,6 @@ spec:
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
-      serviceAccountName: db-crud-php-sa
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:

@@ -10,6 +10,7 @@ spec:
       labels:
         app: crud-php
     spec:
+      serviceAccount: crud-php-sa
       containers:
         - name: crud-php-container
           image: luisavelino/crud_php-source_code:624791a
@@ -32,7 +33,6 @@ spec:
             periodSeconds: 10
             failureThreshold: 5
             initialDelaySeconds: 3
-      #serviceAccountName: crud-php-sa
   selector:
     matchLabels:
       app: crud-php
