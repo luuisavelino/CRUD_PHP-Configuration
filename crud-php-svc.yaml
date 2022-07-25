@@ -8,4 +8,4 @@ spec:
     - port: 80
   selector:
     app: crud-php
-  # sessionAffinity: ClientIP 
+  sessionAffinity: ClientIP 
