@@ -10,3 +10,4 @@ spec:
   selector:
     app: crud-php
   sessionAffinity: ClientIP 
+ 
