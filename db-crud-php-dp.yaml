@@ -14,6 +14,8 @@ spec:
       containers:
         - name: db-crud-php-container
           image: luisavelino/db-crud_php-source_code:765d362
+          args:
+            - "--ignore-db-dir=lost+found"
           ports:
             - containerPort: 3306
           envFrom:
