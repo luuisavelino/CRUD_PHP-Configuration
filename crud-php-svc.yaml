@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: crud-php-svc
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
+      nodePort: 30000
   selector:
     app: crud-php
-  sessionAffinity: ClientIP 
